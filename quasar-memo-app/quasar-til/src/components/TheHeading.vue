@@ -14,6 +14,18 @@
         </q-tabs>
       </template>
       <template v-else>
+        <q-toggle
+          v-model="darkMode"
+          :icon="$q.dark.isActive ? 'dark_mode' : 'light_mode'"
+          dark
+        />
+        <q-btn
+          icon="settings"
+          flat
+          dense
+          class="full-height q-px-sm"
+          to="/color-settings"
+        />
         <q-btn
           flat
           dense
@@ -31,7 +43,7 @@ import { storeToRefs } from "pinia";
 import { useUserStore } from "stores/auth/user";
 import { computed, onMounted, ref, watch } from "vue";
 import { useRouter } from "vue-router";
-// import { useQuasar } from "quasar";
+import { useQuasar } from "quasar";
 
 const { getUser: username, isLogin } = storeToRefs(useUserStore());
 
@@ -44,6 +56,16 @@ const logoutUser = () => {
   clearLog();
   router.push("/login");
 };
+
+const $q = useQuasar();
+const darkMode = ref(false);
+
+watch(
+  () => darkMode.value,
+  (val) => {
+    $q.dark.set(val);
+  }
+);
 </script>
 
 <style lang="scss" scoped></style>

@@ -27,6 +27,13 @@ const routes = [
           auth: true,
         },
       },
+      {
+        path: "/color-settings",
+        component: () => import("pages/ColorSettingPage.vue"),
+        meta: {
+          auth: true,
+        },
+      },
     ],
   },
 
