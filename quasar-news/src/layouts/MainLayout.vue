@@ -3,9 +3,14 @@
     <AppHeader />
     <q-page-container>
       <RouterView v-slot="{ Component, route }">
-        <Transition name="fade">
+        <transition
+          appear
+          duration="500"
+          enter-active-class="animated fadeIn"
+          leave-active-class="animated fadeOut"
+        >
           <component :is="Component" :key="route.path" />
-        </Transition>
+        </transition>
       </RouterView>
     </q-page-container>
   </q-layout>
@@ -15,14 +20,4 @@
 import AppHeader from "components/AppHeader.vue";
 </script>
 
-<style lang="scss" scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.5s linear;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>
+<style lang="scss" scoped></style>
