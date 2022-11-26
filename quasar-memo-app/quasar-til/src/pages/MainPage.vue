@@ -5,7 +5,7 @@
     </div>
     <TheFormPostList @refresh="FETCH_POST" />
     <div class="btn-wrap-1">
-      <q-btn round class="rotate-90" color="primary" icon="add" to="/add" />
+      <q-btn round color="accent" icon="add" to="/add" />
     </div>
   </q-page>
 </template>

@@ -41,7 +41,7 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useUserStore } from "stores/auth/user";
-import { computed, onMounted, ref, watch } from "vue";
+import { computed, ref, watch, watchEffect } from "vue";
 import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
@@ -58,14 +58,12 @@ const logoutUser = () => {
 };
 
 const $q = useQuasar();
-const darkMode = ref(false);
+const darkMode = ref($q.localStorage.getItem("dark_mode"));
 
-watch(
-  () => darkMode.value,
-  (val) => {
-    $q.dark.set(val);
-  }
-);
+watchEffect(() => {
+  $q.dark.set(darkMode.value);
+  $q.localStorage.set("dark_mode", darkMode.value);
+});
 </script>
 
 <style lang="scss" scoped></style>

@@ -6,12 +6,9 @@
         <div>
           <q-color v-model="color.hex" class="my-picker" />
         </div>
-        <div>
-          <q-btn
-            @click="submit(color.name, color.hex)"
-            label="submit"
-            class="q-mt-sm"
-          />
+        <div class="flex justify-between q-pt-sm">
+          <q-btn @click="submit(color.name, color.hex)" label="submit" />
+          <q-btn @click="reset(color.name)" label="reset" />
         </div>
       </div>
     </div>
@@ -19,10 +16,24 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
-import { setCssVar } from "quasar";
+import { ref, watch, watchEffect } from "vue";
+import { getCssVar, setCssVar } from "quasar";
+import { useQuasar } from "quasar";
+
+const $q = useQuasar();
 
 const brandColors = ref([
+  { name: "primary", hex: getCssVar("primary") },
+  { name: "secondary", hex: getCssVar("secondary") },
+  { name: "accent", hex: getCssVar("accent") },
+  { name: "dark", hex: getCssVar("dark") },
+  { name: "dark-page", hex: getCssVar("dark-page") },
+  { name: "positive", hex: getCssVar("positive") },
+  { name: "negative", hex: getCssVar("negative") },
+  { name: "info", hex: getCssVar("info") },
+  { name: "warning", hex: getCssVar("warning") },
+]);
+const defaultBrandColors = [
   { name: "primary", hex: "#1976d2" },
   { name: "secondary", hex: "#26a69a" },
   { name: "accent", hex: "#9c27b0" },
@@ -32,10 +43,16 @@ const brandColors = ref([
   { name: "negative", hex: "#c10015" },
   { name: "info", hex: "#31ccec" },
   { name: "warning", hex: "#f2c037" },
-]);
+];
 
 const submit = (name, hex) => {
   setCssVar(name, hex);
+  $q.localStorage.set(name, hex);
+};
+const reset = (name) => {
+  const findDefaultHex = defaultBrandColors.find((x) => x.name === name).hex;
+  brandColors.value.find((x) => x.name === name).hex = findDefaultHex;
+  setCssVar(name, findDefaultHex);
 };
 </script>
 
