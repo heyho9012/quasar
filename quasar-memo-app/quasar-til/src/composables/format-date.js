@@ -1,11 +1,11 @@
-const useFormatDate = date => {
-  new Date(date).toLocaleString('ko-KR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
+const useFormatDate = (date) => {
+  return new Date(date).toLocaleString("ko-KR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
     hour12: false,
   });
 };

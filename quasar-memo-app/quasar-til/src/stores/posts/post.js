@@ -6,8 +6,8 @@ import { fetchPost } from "src/api/posts";
 const options = {
   message: "loading...",
   spinnerSize: "100px",
-  spinnerColor: "secondary",
-  messageColor: "secondary",
+  spinnerColor: "accent",
+  messageColor: "accent",
   backgroundColor: "transparent",
 };
 
