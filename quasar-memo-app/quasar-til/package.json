@@ -6,7 +6,7 @@
   "author": "John Ro <55071366+heyho9012@users.noreply.github.com>",
   "private": true,
   "scripts": {
-    "electron:dev": "quasar dev -m electron --devtools",
+    "electron:dev": "quasar dev -m electron",
     "electron:build": "quasar build -m electron",
     "dev": "quasar dev",
     "build": "quasar build",
