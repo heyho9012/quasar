@@ -1,8 +1,18 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr fFf">
     <TheHeading />
     <q-page-container>
-      <router-view />
+      <RouterView v-slot="{ Component, route }">
+        <transition
+          appear
+          mode="out-in"
+          enter-active-class="animated fadeInLeft"
+          leave-active-class="animated fadeOutLeft"
+          :duration="800"
+        >
+          <component :is="Component" :key="route.path" />
+        </transition>
+      </RouterView>
     </q-page-container>
   </q-layout>
 </template>

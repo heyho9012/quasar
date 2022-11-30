@@ -1,7 +1,7 @@
 <template>
   <q-page padding>
     <div class="text-h5 text-center text-weight-bold text-primary q-mb-md">
-      Quasar & Vue 3
+      Quasar Vue3 Electron
     </div>
     <TheFormPostList @refresh="FETCH_POST" />
     <div class="btn-wrap-1">

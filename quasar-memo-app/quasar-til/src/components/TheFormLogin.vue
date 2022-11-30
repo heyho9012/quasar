@@ -1,4 +1,13 @@
 <template>
+  <q-banner class="bg-secondary text-white" inline-actions v-if="banner">
+    <template #avatar>
+      <q-icon name="signal_wifi_off" size="sm" class="self-center" />
+    </template>
+    <template #default> 서버에 연결되지 않았습니다. </template>
+    <template #action>
+      <q-btn flat color="white" label="확인" @click="banner = false" />
+    </template>
+  </q-banner>
   <q-form @submit.prevent="submitForm" class="q-pa-md q-col-gutter-y-lg">
     <q-input
       filled
@@ -54,6 +63,8 @@ const password = ref("");
 const pwdRef = ref(null);
 const logMessage = ref("");
 
+const banner = ref(false);
+
 // submit signup form
 const { FETCH_LOGIN } = useUserStore();
 const router = useRouter();
@@ -70,8 +81,9 @@ const submitForm = async () => {
     pwdRef.value.resetValidation();
     router.push("/main");
   } catch (error) {
+    banner.value = true;
     console.log(error);
-    logMessage.value = error.response.data;
+    logMessage.value = error;
   }
 };
 </script>

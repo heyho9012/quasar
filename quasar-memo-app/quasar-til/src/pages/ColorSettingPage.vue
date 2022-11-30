@@ -1,5 +1,12 @@
 <template>
   <q-page padding>
+    <q-ajax-bar
+      ref="ajaxBar"
+      position="top"
+      size="8px"
+      skip-hijack
+      color="negative"
+    ></q-ajax-bar>
     <div class="q-pa-md row items-start q-gutter-md">
       <div class="list" v-for="color in brandColors" :key="color">
         <div class="text-center q-mb-sm text-subtitle1">${{ color.name }}</div>
@@ -12,15 +19,19 @@
         </div>
       </div>
     </div>
+    <div class="row reverse">
+      <q-btn @click="allReset" label="allreset" />
+    </div>
   </q-page>
 </template>
 
 <script setup>
-import { ref, watch, watchEffect } from "vue";
+import { ref } from "vue";
 import { getCssVar, setCssVar } from "quasar";
 import { useQuasar } from "quasar";
 
 const $q = useQuasar();
+const ajaxBar = ref(null);
 
 const brandColors = ref([
   { name: "primary", hex: getCssVar("primary") },
@@ -53,6 +64,17 @@ const reset = (name) => {
   const findDefaultHex = defaultBrandColors.find((x) => x.name === name).hex;
   brandColors.value.find((x) => x.name === name).hex = findDefaultHex;
   setCssVar(name, findDefaultHex);
+};
+const allReset = () => {
+  ajaxBar.value.start();
+  defaultBrandColors.forEach((x) => {
+    brandColors.value.forEach((y) => {
+      y.name == x.name ? (y.hex = x.hex) : "";
+    });
+    setCssVar(x.name, x.hex);
+    $q.localStorage.set(x.name, x.hex);
+  });
+  ajaxBar.value.stop();
 };
 </script>
 

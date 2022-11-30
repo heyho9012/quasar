@@ -14,6 +14,14 @@ const routes = [
         },
       },
       {
+        path: "button",
+        component: () => import("pages/drawer/ButtonPage.vue"),
+      },
+      {
+        path: "carousel",
+        component: () => import("pages/drawer/CarouselPage.vue"),
+      },
+      {
         path: "/add",
         component: () => import("pages/PostAddPage.vue"),
         meta: {

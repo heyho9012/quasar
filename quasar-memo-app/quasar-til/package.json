@@ -6,7 +6,7 @@
   "author": "John Ro <55071366+heyho9012@users.noreply.github.com>",
   "private": true,
   "scripts": {
-    "electron:dev": "quasar dev -m electron",
+    "electron:dev": "quasar dev -m electron --devtools",
     "electron:build": "quasar build -m electron",
     "dev": "quasar dev",
     "build": "quasar build",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
+    "@vue/devtools": "^6.4.5",
     "axios": "^0.21.1",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
@@ -32,6 +33,7 @@
     "eslint": "^8.10.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^9.0.0",
+    "mongoose": "^6.7.4",
     "postcss": "^8.4.14",
     "prettier": "^2.5.1"
   },
