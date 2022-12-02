@@ -8,7 +8,7 @@
           mode="out-in"
           enter-active-class="animated fadeInLeft"
           leave-active-class="animated fadeOutLeft"
-          :duration="800"
+          :duration="300"
         >
           <component :is="Component" :key="route.path" />
         </transition>

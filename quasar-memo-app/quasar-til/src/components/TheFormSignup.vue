@@ -3,12 +3,15 @@
     <q-input
       filled
       label="id"
+      type="mail"
       hint="Email"
       v-model="username"
       ref="nameRef"
       lazy-rules
       :rules="useMailRules"
       error-message="Invalid email address."
+      label-color="deep-orange"
+      color="deep-orange"
     />
     <q-input
       filled
@@ -20,6 +23,7 @@
       lazy-rules
       :rules="[(val) => val && val.length >= 8]"
       error-message="The password must have at least 8 characters."
+      counter
     >
       <template v-slot:append>
         <q-icon
@@ -29,14 +33,15 @@
         />
       </template>
     </q-input>
-    <q-input filled label="nickname" hint="nickname" v-model="nickname" />
+    <q-input label="nickname" hint="nickname" v-model="nickname" filled />
     <div class="flex flex-center">
       <span
         class="text-subtitle1"
         :class="{ 'text-negative': error, 'text-primary': !error }"
         >{{ logMessage }}</span
       >
-      <q-btn label="signup" type="submit" class="q-ml-auto" />
+      <q-btn label="login" to="/login" class="q-ml-auto" />
+      <q-btn label="signup" type="submit" class="q-ml-md" />
     </div>
   </q-form>
 </template>
@@ -61,7 +66,6 @@ const logMessage = ref("");
 const error = ref(false);
 
 // submit signup form
-
 const submitForm = async () => {
   try {
     const user = {

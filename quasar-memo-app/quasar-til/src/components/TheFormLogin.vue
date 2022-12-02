@@ -16,9 +16,13 @@
       v-model="username"
       ref="nameRef"
       lazy-rules
-      :rules="useMailRules"
+      type="email"
+      :rules="['email']"
       error-message="Invalid email address."
     />
+    <!-- Quasar에서 기본적으로 제공하는 rule들이 있음. -->
+    <!-- :rules="useMailRules"
+      error-message="Invalid email address." -->
     <q-input
       filled
       label="password"
