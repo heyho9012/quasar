@@ -8,7 +8,7 @@
       v-model="username"
       ref="nameRef"
       lazy-rules
-      :rules="useMailRules"
+      :rules="['email']"
       error-message="Invalid email address."
       label-color="deep-orange"
       color="deep-orange"
@@ -49,7 +49,6 @@
 <script setup>
 import { computed, ref, unref } from "vue";
 import { registerUser } from "src/api/auth";
-import { useMailRules } from "src/composables/validation";
 
 // input options
 const isPwd = ref(true);

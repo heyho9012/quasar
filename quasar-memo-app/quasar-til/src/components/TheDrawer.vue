@@ -1,6 +1,6 @@
 <template>
   <q-drawer v-model="drawer" v-if="isLogin">
-    <q-list>
+    <q-list class="scroll">
       <q-item-label header>Quasar Vue 3</q-item-label>
       <template v-for="item in items" :key="item.name">
         <q-item clickable :to="item.to">
@@ -85,6 +85,56 @@ const items = [
     name: "Checkbox & Toggle",
     to: "/checkbox",
     caption: "q-checkbox, q-toggle",
+  },
+  {
+    name: "Slider",
+    to: "/slider",
+    caption: "q-slider",
+  },
+  {
+    name: "Time Picker",
+    to: "/time-picker",
+    caption: "q-time",
+  },
+  {
+    name: "Date Picker",
+    to: "/date-picker",
+    caption: "q-date",
+  },
+  {
+    name: "Infinite Scroll & Inner Loading",
+    to: "/infinite-scroll",
+    caption: "q-infinite-scroll, q-inner-loading",
+  },
+  {
+    name: "Intersection",
+    to: "/intersection",
+    caption: "q-intersection",
+  },
+  {
+    name: "Menu",
+    to: "/menu",
+    caption: "q-menu",
+  },
+  {
+    name: "Parallax",
+    to: "/parallax",
+    caption: "q-parallax",
+  },
+  {
+    name: "Stepper",
+    to: "/stepper",
+    caption: "q-stepper",
+  },
+  {
+    name: "Table",
+    to: "/table",
+    caption: "q-table",
+  },
+  {
+    name: "Skeleton",
+    to: "/skeleton",
+    caption: "q-skeleton",
   },
 ];
 </script>
